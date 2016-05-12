@@ -1,0 +1,15 @@
+{
+  "name": "tide",
+  "version": "1.0.0",
+  "description": "Web app that pulls from World Tides API to show tide information",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tide",
+    "forecast"
+  ],
+  "author": "Shaun Yap",
+  "license": "ISC"
+}
