@@ -4,4 +4,6 @@ html
         title Singapore Tide Information
     body
     h1 Singapore Tide Information
-    p The next #{message} tide is at #{time}
+    ul.tideTable
+        each tide in tides
+            li= tide.type.toLowerCase() + ' tide at ' + tide.date + ' reaching ' + tide.height.toFixed(2) +'m'

@@ -5,22 +5,14 @@ var http = require('http').Server(app);
 var tide = require('./tide.js');
 var moment = require('moment');
 
-var nextTide;
-var tideTime;
-
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views')
 
 app.get('/',  function(req, res) {
     tide().then(function (body) {
-        // make lower case
-            nextTide = body.extremes[1].type.toLowerCase();
-            tideTime =  moment.unix(body.extremes[1].dt).format("h:mm a");
+            tides = body.extremes;
     }).then(function() {
-        res.render('main', {
-         message: nextTide,
-         time: tideTime
-     });
+        res.render('main');
  });
 });
 
