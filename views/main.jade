@@ -9,7 +9,7 @@ html
             -function tideTime(unix) {
                 -var date = new Date(unix*1000);
                 -var hours = date.getHours();
-                -if (hours => 12) { hours = '0' + hours};
+                -if (hours.toString().length === 1) { hours = '0' + hours};
                 -var minutes = date.getMinutes();
                 -if (minutes.toString().length === 1) { minutes = '0' + minutes};
                 -return  hours.toString() + minutes.toString();
