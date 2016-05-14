@@ -6,4 +6,12 @@ html
     h1 Singapore Tide Information
     ul.tideTable
         each tide in tides
-            li= tide.type.toLowerCase() + ' tide at ' + tide.date + ' reaching ' + tide.height.toFixed(2) +'m'
+            -function tideTime(unix) {
+                -var date = new Date(unix*1000);
+                -var hours = date.getHours();
+                -if (hours => 12) { hours = '0' + hours};
+                -var minutes = date.getMinutes();
+                -if (minutes.toString().length === 1) { minutes = '0' + minutes};
+                -return  hours.toString() + minutes.toString();
+            -}
+            li= tide.type.toLowerCase() + ' tide at ' + tideTime(tide.dt) + ' reaching ' + tide.height.toFixed(2) +'m'
