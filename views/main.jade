@@ -5,6 +5,7 @@ html
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     body
         style
+            | body { padding-bottom: 70px; }
             | .headerRow { font-weight:800; }
             | .vertical-center {
             |     min-height: 100vh;
@@ -14,6 +15,12 @@ html
             |}
             |table {border: 1px solid #888; }
             |h2 {margin-bottom: 2rem;}
+            |.disc{
+            |    margin-top: 3rem;
+            |    size: 0.6em;
+            |    color: #888;
+            |}
+
         .vertical-center
             .container
                 .row
@@ -40,6 +47,10 @@ html
                                         h4= tideTime(tide.dt) 
                                     td.text-center
                                         h4= tide.height.toFixed(2) +'m'
+                .row.disc
+                    .col-sm-12
+                        p.text-center Tidal Data retrieved from www.worldtides.info. Copyright (c) 2010-2015 Oregon State University. Licensed for individual spatial coordinates only via ModEM-Geophysics Inc. NO GUARANTEES ARE MADE ABOUT THE CORRECTNESS OF THIS TIDAL DATA. You may not use this data if anyone or anything could come to harm as a result of using it.
+
         nav.navbar.navbar-default.navbar-fixed-bottom
             .container.text-center
                 p: Copyright © 2016  #[a(href="http://www.siegeflow.com") Shaun Yap] All Rights Reserved.
