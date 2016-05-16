@@ -2,16 +2,44 @@ doctype html
 html
     head
         title Singapore Tide Information
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
     body
-    h1 Singapore Tide Information
-    ul.tideTable
-        each tide in tides
-            -function tideTime(unix) {
-                -var date = new Date(unix*1000);
-                -var hours = date.getHours();
-                -if (hours.toString().length === 1) { hours = '0' + hours};
-                -var minutes = date.getMinutes();
-                -if (minutes.toString().length === 1) { minutes = '0' + minutes};
-                -return  hours.toString() + minutes.toString();
-            -}
-            li= tide.type.toLowerCase() + ' tide at ' + tideTime(tide.dt) + ' reaching ' + tide.height.toFixed(2) +'m'
+        style
+            | .headerRow { font-weight:800; }
+            | .vertical-center {
+            |     min-height: 100vh;
+            |     margin: 0;
+            |     display: flex;
+            |     align-items: center;
+            |}
+            |table {border: 1px solid #888; }
+            |h2 {margin-bottom: 2rem;}
+        .vertical-center
+            .container
+                .row
+                    .col-sm-12.col-md-6.col-md-offset-3
+                        h2.text-center Singapore Tide Information for #{date}
+                        table.table.table-hover
+                            tr.headerRow
+                                td.text-center Type
+                                td.text-center Time
+                                td.text-center Height
+                            each tide in tides
+                                -function tideTime(unix) {
+                                    -var date = new Date(unix*1000);
+                                    -var hours = date.getHours();
+                                    -if (hours.toString().length === 1) { hours = '0' + hours};
+                                    -var minutes = date.getMinutes();
+                                    -if (minutes.toString().length === 1) { minutes = '0' + minutes};
+                                    -return  hours.toString() + minutes.toString();
+                                -}
+                                tr
+                                    td.text-center
+                                        h4= tide.type.toLowerCase() + ' tide ' 
+                                    td.text-center
+                                        h4= tideTime(tide.dt) 
+                                    td.text-center
+                                        h4= tide.height.toFixed(2) +'m'
+        nav.navbar.navbar-default.navbar-fixed-bottom
+            .container.text-center
+                p: Copyright © 2016  #[a(href="http://www.siegeflow.com") Shaun Yap] All Rights Reserved.
